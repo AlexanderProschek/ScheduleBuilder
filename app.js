@@ -18,14 +18,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-	res.send(express.static("/main.html"));
+	res.status(200).send(express.static("/main.html"));
+});
+
+app.get('/', (req, res) => {
+	res.status(200).send("Hello");
 });
 
 // Handle an incoming schedule request
 app.post('/raw', (req, reso) => {
 	console.log(req.body);
     p(req.body).then(res => {
-		reso.send(res);
+		reso.status(200).send(res);
 	})
 });
 
