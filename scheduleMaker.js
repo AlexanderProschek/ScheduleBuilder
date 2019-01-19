@@ -1,4 +1,9 @@
-const request = require('request');
+/**
+ * Author: Alexander Proschek
+ */
+
+const rp = require('request-promise');
+const Bluebird = require('bluebird');
 
 // The URL to the online database where class info is scraped from
 const baseUrl = 'https://soc.courseoff.com/uga/terms/201901/majors/';
@@ -16,25 +21,42 @@ var classes = [
     {
         'dep': 'BIOL',
         'num': '1103'
+    },
+    {
+        'dep': 'ENGL',
+        'num': '1102'
+    },
+    {
+        'dep': 'MATH',
+        'num': '3300'
     }
 ]
 
 // Get all the neccesary data from API calls
-function scrape(allClasses, classArr) {
-    var cur = allClasses.pop();
-    var url = baseUrl + cur.dep + '/courses/' + cur.num + '/sections';
+function run(allClasses) {
+    // Set up the requests for Bluebird
+    var requests = [];
+    while(allClasses.length > 0) {
+        var cur = allClasses.pop();
+        var url = baseUrl + cur.dep + '/courses/' + cur.num + '/sections';
+        var t = {'uri':url, 'json':true};
+        requests.push(rp(t));
+    }
 
-    // Make the http request to Courseoff
-    request(url, { json: true }, (err, res, body) => {
-    if (err) { console.log(err); }
-        classArr.push(body);
-        if(allClasses.length > 0) {
-            // Next API call
-            scrape(allClasses, classArr);
-        } else {
-            // API calls done
-            return combination(classArr);
+    // Add all the API calls
+    var resp = [];
+    return Bluebird.all(requests)
+    .spread(function () {
+        // Wait till all the API calls have answered
+        // and extract the responses
+        for(i = 0; i < arguments.length; i++) {
+            resp.push(arguments[i]);
         }
+        return combination(resp);
+    })
+    .catch(function (err) {
+        // Handle errors
+        console.log(err);
     });
 }
 
@@ -78,7 +100,7 @@ function combination(list) {
     //console.log(next);
     console.log(next.length + '/' + numIter);
 
-    return next;
+    return {'max':numIter,'true':next.length,'schedules':next};
 }
 
 // Checks if a given schedule is valid
@@ -119,11 +141,8 @@ function validateSchedule(schedule) {
     return true;
 }
 
-function run(classes) {
-    var classArr = [];
-    scrape(classes, classArr);
-}
-
-module.exports = run;
-
-run(classes);
+/*
+(async () => {
+    var res = await run(classes)
+    console.log(res)
+})()

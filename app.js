@@ -1,6 +1,10 @@
+/**
+ * Author: Alexander Proschek
+ */
+
 var express = require('express');
 var app = express();
-var maker = require('./scheduleMaker');
+var maker = require('./oldScheduleMaker');
 
 app.use('/', express.static('frontend'));
 
@@ -10,8 +14,12 @@ app.get('/', (req, res) => {
 }); */
 
 // Handle an incoming schedule request
-app.post('/run', (req, res) => {
+app.post('/raw', (req, res) => {
     
+});
+
+app.post('/scored', (req, res) => {
+
 });
 
 //app.listen(80);

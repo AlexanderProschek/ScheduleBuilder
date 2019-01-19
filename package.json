@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/AlexanderProschek/ScheduleBuilder#readme",
   "dependencies": {
+    "bluebird": "^3.5.3",
     "express": "^4.16.4",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   }
 }

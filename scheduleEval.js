@@ -1,18 +1,18 @@
-var maker = require('./scheduleMaker');
+/**
+ * Author: Alexander Proschek 
+ */
 
-var classes = [
-    {
-        'dep': 'CSCI',
-        'num': '1730'
-    },
-    {
-        'dep': 'CSCI',
-        'num': '2610'
-    },
-    {
-        'dep': 'BIOL',
-        'num': '1103'
-    }
-]
+/*
+ Options:
+ - Morning or afternoon classes?
+ - Close classes or lots of space?
+ - 
+*/
 
-console.log(maker(classes));
+function run(classes, options) {
+
+}
+
+function eval(week) {
+
+}
