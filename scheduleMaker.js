@@ -3,18 +3,19 @@ const request = require('request');
 // The URL to the online database where class info is scraped from
 const baseUrl = 'https://soc.courseoff.com/uga/terms/201901/majors/';
 
+// Example classes from UGA
 var classes = [
     {
-        'dep': 'MATH',
-        'num': '2500'
+        'dep': 'CSCI',
+        'num': '1730'
     },
     {
         'dep': 'CSCI',
         'num': '2610'
     },
     {
-        'dep': 'MATH',
-        'num': '3300'
+        'dep': 'BIOL',
+        'num': '1103'
     }
 ]
 
@@ -25,14 +26,14 @@ function scrape(allClasses, classArr) {
 
     // Make the http request to Courseoff
     request(url, { json: true }, (err, res, body) => {
-    if (err) { return console.log(err); }
+    if (err) { console.log(err); }
         classArr.push(body);
         if(allClasses.length > 0) {
             // Next API call
-            return scrape(allClasses, classArr);
+            scrape(allClasses, classArr);
         } else {
             // API calls done
-            combination(classArr);
+            return combination(classArr);
         }
     });
 }
@@ -65,20 +66,19 @@ function combination(list) {
             }
         }
 
-        //console.log(k);
-
         // Check if schedule is valid
         if(validateSchedule(schedule)) {
             next.push(schedule);
         }
-        //next.push(schedule);
     }
 
     validateSchedule(next[0]);
 
     // Schedule Builder is done
-    console.log(next);
+    //console.log(next);
     console.log(next.length + '/' + numIter);
+
+    return next;
 }
 
 // Checks if a given schedule is valid
@@ -89,6 +89,7 @@ function validateSchedule(schedule) {
     for(i = 0; i < schedule.length; i++) {
         var times = schedule[i].timeslots;
         for(t = 0; t < times.length; t++) {
+            // Check if there is another class already at the same time
             if(week[times[t].day][times[t].start_time/5] != null ||
                  week[times[t].day][times[t].end_time/5] != null) {
                 return false;
@@ -98,6 +99,7 @@ function validateSchedule(schedule) {
         }
     }
 
+    // Check if there are any overlapping classes
     for(w = 0; w < 5; w++) {
         var cur = '(';
         for(i = 0; i < week[w]; i++) {
@@ -113,9 +115,15 @@ function validateSchedule(schedule) {
         }
     }
 
+    // Schedule is possible
     return true;
 }
 
-var classArr = [];
+function run(classes) {
+    var classArr = [];
+    scrape(classes, classArr);
+}
 
-scrape(classes, classArr);
+module.exports = run;
+
+run(classes);
