@@ -1,8 +1,10 @@
 var express = require('express');
 var app = express();
 
-app.get('/frontend', (req, res) => {
-	res.send(express.static("/frontend/main.html"));
+app.use('/', express.static('frontend'));
+
+app.get('/', (req, res) => {
+	res.send(express.static("/main.html"));
 });
 
 app.listen(80);
