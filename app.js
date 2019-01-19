@@ -8,4 +8,9 @@ app.get('/', (req, res) => {
 	res.send(express.static("/main.html"));
 }); */
 
+// Handle an incoming schedule request
+app.post('/run', (req, res) => {
+    
+});
+
 app.listen(80);
