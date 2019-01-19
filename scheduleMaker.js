@@ -33,7 +33,7 @@ var classes = [
 ]
 
 // Get all the neccesary data from API calls
-function run(allClasses) {
+module.exports = function run(allClasses) {
     // Set up the requests for Bluebird
     var requests = [];
     while(allClasses.length > 0) {
@@ -98,7 +98,7 @@ function combination(list) {
 
     // Schedule Builder is done
     //console.log(next);
-    console.log(next.length + '/' + numIter);
+    //console.log(next.length + '/' + numIter);
 
     return {'max':numIter,'true':next.length,'schedules':next};
 }
@@ -146,3 +146,4 @@ function validateSchedule(schedule) {
     var res = await run(classes)
     console.log(res)
 })()
+*/
