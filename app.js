@@ -2,11 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', (req, res) => {
-	res.send("Hello World");
-});
-
-app.get('/other', (req, res) => {
-	res.send('Other');
+	res.send(express.static("/frontend"));
 });
 
 app.listen(80);
