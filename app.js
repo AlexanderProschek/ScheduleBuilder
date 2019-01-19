@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 	res.status(200).send(express.static("/main.html"));
 });
 
-app.get('/', (req, res) => {
+app.get('/raw', (req, res) => {
 	res.status(200).send("Hello");
 });
 
