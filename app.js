@@ -7,8 +7,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
 
-// Import the schedule builder
-var p = require('./scheduleMaker');
+// Import the schedule builder and Evaluator
+var mkr = require('./scheduleMaker');
+var evl = require('./scheduleEval');
 
 // Import the Static front end
 app.use('/', express.static('frontend'));
@@ -21,21 +22,21 @@ app.get('/', (req, res) => {
 	res.status(200).send(express.static("/main.html"));
 });
 
-app.get('/raw', (req, res) => {
-	res.status(200).send("Hello");
-});
-
 // Handle an incoming schedule request
 app.post('/raw', (req, reso) => {
 	console.log(req.body);
-    p(req.body).then(res => {
+    mkr(req.body).then(res => {
 		reso.status(200).send(res);
 	})
 });
 
 // Handle an incoming scored schedule request
-app.post('/scored', (req, res) => {
-	// Todo
+app.post('/scored', (req, reso) => {
+	console.log(req.body);
+    mkr(req.body).then(res => {
+		console.log("ddd");
+		reso.status(200).send(evl(res.schedules));
+	})
 });
 
 app.listen(80);

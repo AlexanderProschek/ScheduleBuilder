@@ -6,7 +6,7 @@ const rp = require('request-promise');
 const Bluebird = require('bluebird');
 
 // The URL to the online database where class info is scraped from
-const baseUrl = 'https://soc.courseoff.com/uga/terms/201901/majors/';
+const baseUrl = 'https://soc.courseoff.com/';
 
 // Example classes from UGA
 var classes = [
@@ -33,12 +33,14 @@ var classes = [
 ]
 
 // Get all the neccesary data from API calls
-module.exports = function run(allClasses) {
+module.exports = function run(data) {
     // Set up the requests for Bluebird
     var requests = [];
+    var allClasses = data.classes;
     while(allClasses.length > 0) {
         var cur = allClasses.pop();
-        var url = baseUrl + cur.dep + '/courses/' + cur.num + '/sections';
+        var url = baseUrl + data.school + '/terms/' + data.term
+             + '/majors/' + cur.dep + '/courses/' + cur.num + '/sections';
         var t = {'uri':url, 'json':true};
         requests.push(rp(t));
     }
@@ -56,7 +58,8 @@ module.exports = function run(allClasses) {
     })
     .catch(function (err) {
         // Handle errors
-        console.log(err);
+        //console.log(err);
+        return;
     });
 }
 

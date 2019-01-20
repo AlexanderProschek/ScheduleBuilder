@@ -1,20 +1,6 @@
-var p = require('./scheduleMaker');
+var week = {"M":[],"T":[],"W":[],"R":[],"F":[]};
 
-var classes = [
-    {
-        'dep': 'CSCI',
-        'num': '1730'
-    },
-    {
-        'dep': 'CSCI',
-        'num': '2610'
-    },
-    {
-        'dep': 'BIOL',
-        'num': '1103'
-    }
-]
 
-p(classes).then(res => {
-    console.log(res);
-})
+week["M"][0] = 1;
+
+console.log(week);
