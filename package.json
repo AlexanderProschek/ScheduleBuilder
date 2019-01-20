@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/AlexanderProschek/ScheduleBuilder#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   }
 }
