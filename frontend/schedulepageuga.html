@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Classes</title>
+    <link rel=stylesheet href="css/gradients.css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body class="bg-aqua">
+    <div class="row justify-content-center align-items-center">
+        <div class="display-3" id="main-title">Class Schedule Builder</div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+
+            <div class="row justify-content-center align-items-center">
+
+                <div class="btn-group dropdowns" id="coursename">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Course Name
+                    </button>
+                    <div class="dropdown-menu" id="coursenamemenu">
+                        <a class="dropdown-item" href="#">MATH</a>
+                        <a class="dropdown-item" href="#">CSCI</a>
+                        <a class="dropdown-item" href="#">ENGL</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="btn-group dropdowns" id="coursenum">
+                    <button type="button" class="btn btn-primary dropdown-toggle but1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Course Number
+                    </button>
+                    <div class="dropdown-menu" id="coursenummenu">
+                        <a class="dropdown-item" href="#">1101</a>
+                        <a class="dropdown-item" href="#">1102</a>
+                        <a class="dropdown-item" href="#">2001</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div id="text"> </div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <button type="button" class="btn btn-danger dropdowns" aria-haspopup="true" aria-expanded="false" id="add">
+                    Add
+                </button>
+            </div>
+
+            <div class="row justify-content-center align-items-center">
+                <div class="font-weight-bold" id="question1">What time do you want your earliest class to be?</div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios10" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        8:00am
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios11" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        9:00am
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios12" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        10:00am
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios13" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        11:00am
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios14" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        12:00pm
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios15" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        I don't care
+                    </label>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center">
+                <div class="font-weight-bold" id="question2">What time do you want your latest class to be?</div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        11:00am
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        12:00pm
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                    <label class="form-check-label" for="exampleRadios2">
+                        1:00pm
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+                    <label class="form-check-label" for="exampleRadios2">
+                        2:00pm
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="option5">
+                    <label class="form-check-label" for="exampleRadios2">
+                        3:00pm
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios6" value="option6">
+                    <label class="form-check-label" for="exampleRadios2">
+                        4:00pm
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios7" value="option7">
+                    <label class="form-check-label" for="exampleRadios2">
+                        5:00pm
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios8" value="option8">
+                    <label class="form-check-label" for="exampleRadios2">
+                        6:00pm
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios9" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        I don't care
+                    </label>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center">
+                <div class="font-weight-bold" id="question3">Do you want your classes spread out or close together?</div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios21" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Close Together
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios22" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Far Apart
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios23" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        I don't care
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center align-items-center">
+                <div class="font-weight-bold" id="question4">Do you want all your classes earlier or later in the day</div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios31" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Earlier
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios32" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Later
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios33" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        I don't care
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6" >
+            <div class="row justify-content-center align-items-center">
+                <div class="d-flex flex-column bd-highlight mb-3">
+                    <div id="class-title">Current Class List</div>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <button type="button" class="btn btn-danger dropdowns" aria-haspopup="true" aria-expanded="false" id="remove">
+                    Remove
+                </button>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <button type="button" class="btn btn-success" id="final-success">Create Schedule</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="js/schedule.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
