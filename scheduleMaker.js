@@ -36,7 +36,7 @@ var classes = [
 module.exports = function run(data) {
     // Set up the requests for Bluebird
     var requests = [];
-    var allClasses = data.classes;
+    var allClasses = data;
     while(allClasses.length > 0) {
         var cur = allClasses.pop();
         var url = baseUrl + data.school + '/terms/' + data.term

@@ -1,6 +1,7 @@
-var week = {"M":[],"T":[],"W":[],"R":[],"F":[]};
+var a = [1,1,3];
 
+a = a.map(e => {
+    return 2*e;
+});
 
-week["M"][0] = 1;
-
-console.log(week);
+console.log(a);

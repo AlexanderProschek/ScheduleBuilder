@@ -33,9 +33,9 @@ app.post('/raw', (req, reso) => {
 // Handle an incoming scored schedule request
 app.post('/scored', (req, reso) => {
 	console.log(req.body);
-    mkr(req.body).then(res => {
-		console.log("ddd");
-		reso.status(200).send(evl(res.schedules));
+    mkr(req.body.classes).then(res => {
+		console.log(res);
+		reso.status(200).send(evl(res.schedules, req.body.options));
 	})
 });
 
