@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 // Handle an incoming schedule request
 app.post('/raw', (req, reso) => {
-	console.log(req.body);
+	//console.log(req.body);
     mkr(req.body).then(res => {
 		reso.status(200).send(res);
 	})
@@ -32,9 +32,8 @@ app.post('/raw', (req, reso) => {
 
 // Handle an incoming scored schedule request
 app.post('/scored', (req, reso) => {
-	console.log(req.body);
-    mkr(req.body.classes).then(res => {
-		console.log(res);
+	//console.log(req.body);
+    mkr(req.body).then(res => {
 		reso.status(200).send(evl(res.schedules, req.body.options));
 	})
 });

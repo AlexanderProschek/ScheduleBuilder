@@ -13,26 +13,33 @@ var geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?place_id=ChI
 
 module.exports = function run(classes, options) {
     var back = [];
-    var n = options.n;
+    var n = 10;
+    if(options.n) n = options.n;
     var lowest;
+
+    console.log(classes);
 
     while(classes.length > 0) {
         var cur = classes.pop();
         var score = eval(cur, options);
         if(back.length < n) {
-            if(lowest > score) {
-                lowest = score;
-            }
             back.push({"score":score,"sched":cur});
         } else {
-            if(score > lowest) {
-                back.sort((e1,e2) => {
-                    e1.score - e2.score;
-                });
-                back[n-1] = {"score":score,"sched":cur};
+            back.sort((e1,e2) => {
+                return e2.score - e1.score;
+            });
+            if(back[n-1].score < score) {
+                back[n-1] = {"score":score,"schule":cur};
             }
         }
     }
+
+    back.sort((e1,e2) => {
+        return e2.score - e1.score;
+    });
+
+    console.log(back);
+
 /*
     back = back.map(e => {
         return e.sched;
